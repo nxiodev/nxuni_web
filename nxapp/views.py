@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 # from blog.models import blog
 
 # Create your views here.
-
+#coment
 def home(request):
     return render(request, 'nxapp/home.html')
 
