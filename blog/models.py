@@ -28,7 +28,7 @@ class Blogger(models.Model):
 
 
     def __str__(self):
-        return self.correo_electronico
+        return str(self.usuario)
 
 
 class Post(models.Model):
@@ -43,9 +43,12 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     categorias = models.ManyToManyField(Categoria)
+
+    @property
+    def get_main_category(self):
+        main_category = self.categorias[0]
+        return main_category
     # , on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
-
-
