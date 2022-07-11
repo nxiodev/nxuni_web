@@ -1,10 +1,25 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse
+from .models import Newsletter
+from django.contrib import messages
+from .forms import NewsLetterForm
+
 # from blog.models import blog
 
 # Create your views here.
 #coment
+
 def home(request):
-    return render(request, 'nxapp/home.html')
+    # form = NewsLetterForm(request.POST)
+    if request.method == "POST":
+        email = request.POST['email'] 
+        newsletter = Newsletter(email = email)
+        newsletter.save()
+        return render(request,"nxapp/home.html",{'email':email})
+        # return HttpResponseRedirect("home")
+    else:
+        return render(request, 'nxapp/home.html')
+
 
 def portfolios(request):
     return render(request, 'nxapp/strategies.html')
@@ -23,3 +38,4 @@ def nxbot(request):
 
 def contacto(request):
     return render(request, 'nxapp/contactus.html')
+
