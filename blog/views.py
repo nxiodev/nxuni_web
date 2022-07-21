@@ -1,18 +1,25 @@
 from django.shortcuts import render
-from blog.models import Post
 from django.http import HttpResponse
-from .models import *
+
+from .models import Post, Categoria
 
 # Create your views here.
 
 def blog(request):
-    
-    posts = Post.objects.all()
+    posts = Post.objects.all().prefetch_related("categorias")
+    print([post.__dict__ for post in posts])
+    categorias = Categoria.objects.all()
+    return render(request, 'blog/blog.html', {
+        'posts': posts,
+        'categorias' : categorias,
+    })
 
-    return render(request, 'blog/blog.html', {'posts': posts})
 
-def post(request, blog_id):
+def post_view(request, blog_id):
     blogger = Post.objects.get(pk=blog_id)
-    return HttpResponse(f'''<p style="background-color:red;text-align:center">estas viendo el blog {blog_id} {blogger}<p>
-                            <div style="background-color:aqua;height:90vh;">Contenido del blog</div>
-    ''')
+    return render(request,'blog/post.html',{
+        'blog_id' : blog_id
+    })
+
+
+# def count_posts(request, )

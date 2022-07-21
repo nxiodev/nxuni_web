@@ -31,16 +31,11 @@
             <div class="widget widget-categories mb-5">
               <h3 class="widget-title">Categories</h3>
               <ul>
-                <li><a class="widget-link" href="#">Digital design<small class="text-muted ps-1 ms-2">23</small></a>
+                {% for categoria in categorias %}
+                <li><a class="widget-link" href="#">{{categoria.nombre}}<small class="text-muted ps-1 ms-2">23</small></a>
                 </li>
-                <li><a class="widget-link" href="#">Brand strategy<small class="text-muted ps-1 ms-2">14</small></a>
-                </li>
-                <li><a class="widget-link" href="#">Project management<small class="text-muted ps-1 ms-2">7</small></a>
-                </li>
-                <li><a class="widget-link" href="#">Business<small class="text-muted ps-1 ms-2">19</small></a></li>
-                <li><a class="widget-link" href="#">Technology<small class="text-muted ps-1 ms-2">35</small></a></li>
-                <li><a class="widget-link" href="#">Travel &amp; Vacation<small
-                      class="text-muted ps-1 ms-2">28</small></a></li>
+                {% endfor %}
+
               </ul>
             </div>
             <!-- Featured posts-->
@@ -90,9 +85,9 @@
         {% for post in posts %}
 
         <article class="card card-horizontal card-hover mb-grid-gutter"><a class="card-img-top"
-            href="1" style="background-image: url(https://finglewoods.org.uk/wp-content/uploads/2019/06/IMG_8010-2.jpg);"></a>
-          <div class="card-body"><a class="meta-link fs-sm mb-2" href="#">{{ post.categorias }}</a>
-            <h2 class="h4 nav-heading mb-4"><a href="1">{{ post.title }}</a></h2><a class="d-flex meta-link fs-sm align-items-center pt-3" href="#"><img
+            href={{ post.id }} style="background-image: url(https://finglewoods.org.uk/wp-content/uploads/2019/06/IMG_8010-2.jpg);"></a>
+          <div class="card-body"><a class="meta-link fs-sm mb-2" href="#">{{ post.categorias[0].nombre }}</a>
+            <h2 class="h4 nav-heading mb-4"><a href={{ post.id }}>{{ post.title }}</a></h2><a class="d-flex meta-link fs-sm align-items-center pt-3" href="#"><img
                 class="rounded-circle" src="{% static '{{post.blogger.image}}' %}" width="36">
               <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">{{ post.blogger }}</span></div>
             </a>

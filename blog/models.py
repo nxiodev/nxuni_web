@@ -9,8 +9,7 @@ class Categoria(models.Model):
     nombre = models.CharField(max_length=80, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
-
-
+    
     def __str__(self):
         return str(self.id)
 
@@ -26,10 +25,10 @@ class Blogger(models.Model):
     apellidos = models.CharField(max_length=80)
     correo_electronico = models.EmailField(unique=True)
 
-
     def __str__(self):
         return str(self.usuario)
     
+
     def get_image(self):
         if self.image and hasattr(self.image,'url'):
             return self.image.url
@@ -42,20 +41,27 @@ class Post(models.Model):
     id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=500)
-    # image = models.ImageField(upload_to="imagblogs", null=True, default=None)
+    image = models.ImageField(upload_to="imagblogs", null=True, default=None)
     blogger = models.ForeignKey(
         Blogger, default=None, null=True, on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     categorias = models.ManyToManyField(Categoria)
-    # comentatios = models.ManyToOneRel(Comentario)
 
-    @property
-    def get_main_category(self):
-        main_category = self.categorias[0]
-        return main_category
-    # , on_delete=models.CASCADE)
+    # def get_main_category(self):
+    #     print(self.categorias)
+    #     main_category = [categoria.nombre for categoria in self.categorias]
+    #     return main_category
+    # # , on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.title
+
+class Comentario(models.Model):
+    author_name = models.CharField(max_length=255)
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+    contenido = models.CharField(max_length=500)
+    likes = models.IntegerField(default=0)
