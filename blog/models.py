@@ -29,6 +29,12 @@ class Blogger(models.Model):
 
     def __str__(self):
         return str(self.usuario)
+    
+    def get_image(self):
+        if self.image and hasattr(self.image,'url'):
+            return self.image.url
+        else:
+            return '../media/bloggers_img/default_profile_image.jpg'
 
 
 class Post(models.Model):
@@ -43,6 +49,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     categorias = models.ManyToManyField(Categoria)
+    # comentatios = models.ManyToOneRel(Comentario)
 
     @property
     def get_main_category(self):
