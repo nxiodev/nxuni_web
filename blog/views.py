@@ -7,11 +7,14 @@ from .models import Post, Categoria
 
 def blog(request):
     posts = Post.objects.all().prefetch_related("categorias")
-    print([post.__dict__ for post in posts])
     categorias = Categoria.objects.all()
+
+    for p in posts:
+        print(p.image)
+
     return render(request, 'blog/blog.html', {
         'posts': posts,
-        'categorias' : categorias,
+        'categorias': categorias,
     })
 
 
