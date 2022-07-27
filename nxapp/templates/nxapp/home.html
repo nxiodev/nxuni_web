@@ -4,12 +4,17 @@
 
 {% block content %}
   <!-- Intro-->
-  <section class="d-flex align-items-center position-relative bg-dark bg-size-cover bg-position-center min-vh-100 overflow-hidden pt-6 pb-lg-5" style="background: rgb(61,178,233); background: linear-gradient(85deg, rgba(61,178,233,1) 2%, rgba(186,29,253,1) 53%, rgba(1,113,139,1) 97%);">
+  <section class="d-flex align-items-center position-relative bg-dark bg-size-cover bg-position-center min-vh-100 overflow-hidden pt-6 pb-lg-5" 
+  style="
+background: rgb(87,92,153);
+background: linear-gradient(90deg, rgba(87,92,153,1) 12%, rgba(22,196,196,1) 51%, rgba(246,64,191,1) 100%);"
+id="firstSection"
+>
     <div class="container-fluid pt-4 pb-5 py-lg-5">
       <div class="row align-items-center py-3">
         <div class="col-xl-6 col-lg-5 d-flex justify-content-end">
           <div class="pt-2 mx-auto mb-5 mb-lg-0 ms-lg-0 me-xl-7 text-center text-lg-start" style="max-width: 495px;">
-            <h1 class="display-4 text-dark pb-2">Increase <span class="fw-light">your portential with our vaslty set of services..</span></h1>
+            <h1 class="display-4 text-dark pb-2">Increase <span class="fw-light">your portential with our vastly set of services..</span></h1>
             <p class="h4 fw-light text-dark opacity-70 line-height-base">Web3, Solidity, smart contracts and web API's develompent and design</p><a class="d-inline-flex align-items-center text-decoration-none pt-2 mt-4 mb-5" href="#more" data-scroll><span class="btn btn-icon rounded-circle border-light flex-shrink-0 px-3">
               <i class="ai-arrow-down h4 text-light my-1"></i></span><span class="ms-3 text-light fw-medium">Take a look!</span></a>
             <hr class="hr-light mt-0 mb-5">
@@ -45,7 +50,7 @@
     </div>
   </section>
   <!-- Whycryptoassets-->
-  <section class="py-5 py-md-6 py-lg-7" id="more">
+  <section class="py-5 py-md-6 py-lg-7" id="more" style="">
     <div class="container pb-3 pt-4 pb-lg-2">
       <h2 class="h1 mb-4 text-lg-start">The best wat to make your <span class='bg-info rounded-pill text-light px-3 py-2'>Web3</span> proyects a reality!</h2>
       <p class="text-muted text-lg-start">En el año 2020, se vivió un momento histórico en las finanzas, más compañías operando comenzaron a colocar su efectivo en activos digitales y criptomonedas. Un ejemplo son MicroStrategy y Tesla con  mas $1B USD cada una en sus balances.</p>
@@ -179,4 +184,16 @@
     </div>
   </section>
 </main>
+
+<script>
+
+    background = document.getElementById('firstSection');
+    window.onscroll = function (e) {
+    let y = window.scrollY
+    console.log(y); // Value of scroll Y in px
+    console.log(background.style.background) // 
+    background.setAttribute('style','background: rgb(87,92,153);background: linear-gradient(90deg, rgba(87,92,153,1) '+y+'%, rgba(22,196,196,1) 51%, rgba(246,64,191,1) 100%);');
+    };
+
+    </script>
 {% endblock %}
