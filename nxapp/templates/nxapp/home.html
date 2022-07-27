@@ -192,7 +192,9 @@ id="firstSection"
     let y = window.scrollY
     console.log(y); // Value of scroll Y in px
     console.log(background.style.background) // 
-    background.setAttribute('style','background: rgb(87,92,153);background: linear-gradient(90deg, rgba(87,92,153,1) '+y+'%, rgba(22,196,196,1) 51%, rgba(246,64,191,1) 100%);');
+    background.setAttribute('style','background: rgb(87,92,153);background: linear-gradient('+y/4+'deg, rgba(87,92,153,1) 12%, rgba(22,196,196,1) 51%, rgba(246,64,191,1) 100%);');
+    
+
     };
 
     </script>
