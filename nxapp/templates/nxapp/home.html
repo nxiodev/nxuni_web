@@ -4,12 +4,11 @@
 
 {% block content %}
   <!-- Intro-->
-  <section class="d-flex align-items-center position-relative bg-dark bg-size-cover bg-position-center min-vh-100 overflow-hidden pt-6 pb-lg-5" 
-  style="
+  <div style="
 background: rgb(87,92,153);
 background: linear-gradient(90deg, rgba(87,92,153,1) 12%, rgba(22,196,196,1) 51%, rgba(246,64,191,1) 100%);"
-id="firstSection"
->
+id="firstSection">
+    <section class="d-flex align-items-center position-relative bg-size-cover bg-position-center min-vh-100 overflow-hidden pt-6 pb-lg-5">
     <div class="container-fluid pt-4 pb-5 py-lg-5">
       <div class="row align-items-center py-3">
         <div class="col-xl-6 col-lg-5 d-flex justify-content-end">
@@ -50,7 +49,7 @@ id="firstSection"
     </div>
   </section>
   <!-- Whycryptoassets-->
-  <section class="py-5 py-md-6 py-lg-7" id="more" style="">
+  <section class="py-5 py-md-6 py-lg-7" id="more">
     <div class="container pb-3 pt-4 pb-lg-2">
       <h2 class="h1 mb-4 text-lg-start">The best wat to make your <span class='bg-info rounded-pill text-light px-3 py-2'>Web3</span> proyects a reality!</h2>
       <p class="text-muted text-lg-start">En el año 2020, se vivió un momento histórico en las finanzas, más compañías operando comenzaron a colocar su efectivo en activos digitales y criptomonedas. Un ejemplo son MicroStrategy y Tesla con  mas $1B USD cada una en sus balances.</p>
@@ -183,17 +182,19 @@ id="firstSection"
       </div>
     </div>
   </section>
+  </div>
+ 
 </main>
 
 <script>
 
     background = document.getElementById('firstSection');
+
     window.onscroll = function (e) {
     let y = window.scrollY
     console.log(y); // Value of scroll Y in px
     console.log(background.style.background) // 
-    background.setAttribute('style','background: rgb(87,92,153);background: linear-gradient('+y/4+'deg, rgba(87,92,153,1) 12%, rgba(22,196,196,1) 51%, rgba(246,64,191,1) 100%);');
-    
+    background.setAttribute('style','background: rgb(87,92,153);background: linear-gradient('+y/8+'deg, rgba(87,92,153,1) 12%, rgba(22,196,196,1) 51%, rgba(246,64,191,1) 100%);');
 
     };
 
