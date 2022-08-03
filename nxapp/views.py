@@ -17,7 +17,7 @@ def home(request):
         newsletter = Newsletter(email = email)
         newsletter.save()
         try:
-            send_mail('Test Subject','wellcome to our newsletter','rsilva@nxuni.io',[{email}],fail_silently=False,)
+            send_mail('Test Subject','wellcome to our newsletter','support.noreply@nxuni.io',[email],fail_silently=False,)
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         return render(request,"nxapp/home.html",{'email':email})
