@@ -139,4 +139,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'media')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
+#Email Settings
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '8025'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False

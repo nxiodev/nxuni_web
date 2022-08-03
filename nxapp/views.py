@@ -3,6 +3,7 @@ from django.shortcuts import render, HttpResponse
 from .models import Newsletter
 from django.contrib import messages
 from .forms import NewsLetterForm
+from django.core.mail import send_mail, BadHeaderError
 
 # from blog.models import blog
 
@@ -15,6 +16,10 @@ def home(request):
         email = request.POST['email'] 
         newsletter = Newsletter(email = email)
         newsletter.save()
+        try:
+            send_mail('Test Subject','wellcome to our newsletter','rsilva@nxuni.io',[{email}],fail_silently=False,)
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
         return render(request,"nxapp/home.html",{'email':email})
         # return HttpResponseRedirect("home")
     else:
